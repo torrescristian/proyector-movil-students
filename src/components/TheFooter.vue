@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="v-card">
     <v-bottom-nav
       :active.sync="bottomNav"
       :color="color"
@@ -31,19 +31,24 @@ export default {
   methods: {
     redirect(page) {
       this.$router.push(page);
-    },
+    }
   },
   computed: {
     color() {
-      const colors = ['indigo', 'teal'];
+      const colors = ["indigo", "teal"];
       return colors[this.bottomNav];
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
-.v-bottom-nav {
-  position: fixed;
+.v-card {
+  .v-bottom-nav {
+    position: fixed;
+  }
+  @media only screen and (orientation: landscape) {
+    display: none;
+  }
 }
 </style>
