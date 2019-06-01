@@ -21,24 +21,29 @@
   </v-card>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      bottomNav: 0
-    };
-  },
-  methods: {
-    redirect(page) {
-      this.$router.push(page);
-    }
-  },
-  computed: {
-    color() {
-      const colors = ["indigo", "teal"];
-      return colors[this.bottomNav];
-    }
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+
+@Component
+export default class TheFooterComponent extends Vue {
+  bottomNav: number;
+
+  constructor() {
+    super();
+    this.bottomNav = 0;
   }
+
+  // properties
+  get color(): string {
+    const colors = ["indigo", "teal"];
+    return colors[this.bottomNav];
+  }
+  
+  // methods
+  redirect(page: string): void {
+    this.$router.push(page);
+  }
+
 };
 </script>
 

@@ -1,33 +1,37 @@
 <template>
   <div class="display">
-    <img class="display__img" :src="imgPath"/>
+    <img class="display__img" :src="imagePath"/>
   </div>
 </template>
 
-<script>
-import SocketIO from 'socket.io-client'
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+import SocketIO from 'socket.io-client';
 
-export default {
-  name: 'DisplayPage',
-  data() {
-    return {
-      io: null,
-      imageName: '',
-    };
-  },
-  computed: {
-    imgPath: {
-      get() {
-        return this.imageName ? `/api/slide/${this.imageName}` : 'default.gif';
-      },
-    },
-  },
+interface Io {
+  on(key: string, cb: Function),
+}
+
+@Component
+export default class DisplayPageComponent extends Vue {
+  io: Io;
+  imageName: string;
+
+  constructor() {
+    super();
+    this.imageName = '';
+  }
+
   mounted() {
-    this.io = SocketIO();
-    this.io.on('server:message', (data) => {
+    this.io = SocketIO() as Io;
+    this.io.on('server:message', (data: { imageName: string }) => {
       this.imageName = data.imageName;
-    })
-  },
+    });
+  }
+
+  get imagePath(): string {
+    return this.imageName ? `/api/slide/${this.imageName}` : 'default.gif';
+  };
 }
 </script>
 
