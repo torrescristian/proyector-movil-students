@@ -1,5 +1,5 @@
 <template>
-  <v-card class="v-card">
+  <v-card class="footer">
     <v-bottom-nav
       :active.sync="bottomNav"
       :color="color"
@@ -7,7 +7,7 @@
       absolute
       dark
       shift
-      class="v-bottom-nav"
+      class="footer__nav"
     >
       <v-btn dark @click="redirect('/')">
         <span>Reproducir</span>
@@ -43,8 +43,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.v-card {
-  .v-bottom-nav {
+.footer {
+  .footer__nav {
     position: fixed;
   }
   @media only screen and (orientation: landscape) {

@@ -1,9 +1,6 @@
 <template>
   <div class="display">
-    <v-img
-      :src="imgPath"
-      contain
-    ></v-img>
+    <img class="display__img" :src="imgPath"/>
   </div>
 </template>
 
@@ -33,3 +30,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+  .display {
+    display: flex;
+    justify-content: center;
+    &__img {
+      height: 80vh;
+      width: 100%;
+    }
+  }
+</style>

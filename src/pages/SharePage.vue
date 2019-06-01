@@ -1,6 +1,6 @@
 <template>
-  <main class="wrapper">
-    <img class="img" src="/api/qr"/>
+  <main class="share">
+    <img class="share__img" src="/api/qr"/>
   </main>
 </template>
 
@@ -11,9 +11,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+.share {
   display: flex;
   justify-content: center;
+  &__img {
+    height: 50vh;
+  }
 }
 </style>
 
