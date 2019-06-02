@@ -1,13 +1,13 @@
 <template>
   <v-card class="footer">
     <v-bottom-nav
+      class="footer__nav"
       :active.sync="bottomNav"
       :color="color"
       :value="true"
       absolute
       dark
       shift
-      class="footer__nav"
     >
       <v-btn dark @click="redirect('/')">
         <span>Reproducir</span>

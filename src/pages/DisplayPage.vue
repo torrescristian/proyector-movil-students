@@ -39,10 +39,16 @@ export default class DisplayPageComponent extends Vue {
   .display {
     display: flex;
     justify-content: center;
+    align-items: baseline;
     &__img {
-      height: 80vh;
       width: 100%;
-      padding: 5vw;
+      height: auto;
+      object-fit: contain;
+      @media only screen and (orientation: landscape) {  
+        width: auto;
+        height: 100vh;
+        padding: 1vw;
+      }
     }
   }
 </style>
