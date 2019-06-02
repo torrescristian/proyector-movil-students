@@ -42,6 +42,7 @@ export default class DisplayPageComponent extends Vue {
     &__img {
       height: 80vh;
       width: 100%;
+      padding: 5vw;
     }
   }
 </style>
