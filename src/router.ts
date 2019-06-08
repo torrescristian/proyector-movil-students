@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import Router, { RouterMode, RouteConfig } from 'vue-router'
-import DisplayPage from './pages/DisplayPage.vue'
+import Vue from 'vue';
+import Router, { RouterMode, RouteConfig } from 'vue-router';
+import DisplayPage from './pages/DisplayPage.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 const mode: RouterMode = 'history';
 const base: string = process.env.BASE_URL;
@@ -23,4 +23,4 @@ export default new Router({
   mode,
   base,
   routes,
-})
+});

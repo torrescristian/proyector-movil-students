@@ -1,13 +1,10 @@
 <template>
-  <v-card class="footer">
+  <v-card class="header">
     <v-bottom-nav
-      class="footer__nav"
       :active.sync="bottomNav"
       :color="color"
       :value="true"
-      absolute
       dark
-      shift
     >
       <v-btn dark @click="redirect('/')">
         <span>Reproducir</span>
@@ -22,36 +19,33 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator';
 
 @Component
-export default class TheFooterComponent extends Vue {
+export default class TheHeaderComponent extends Vue {
   bottomNav: number;
 
   constructor() {
     super();
     this.bottomNav = 0;
-  }
+  };
 
   // properties
   get color(): string {
     const colors = ["indigo", "teal"];
     return colors[this.bottomNav];
-  }
+  };
   
   // methods
   redirect(page: string): void {
     this.$router.push(page);
-  }
+  };
 
 };
 </script>
 
 <style scoped lang="scss">
-.footer {
-  .footer__nav {
-    position: fixed;
-  }
+.header {
   @media only screen and (orientation: landscape) {
     display: none;
   }
