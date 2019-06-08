@@ -57,7 +57,7 @@ export default class DisplayPageComponent extends Vue {
   };
 
   beforeDestroy() {
-    this.socket.disconnect();
+    this.socket.close();
     this.socket = null;
   }
 
