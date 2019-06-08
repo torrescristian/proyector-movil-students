@@ -30,29 +30,38 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import SocketIO from 'socket.io-client';
+import io from 'socket.io-client';
 
 @Component
 export default class DisplayPageComponent extends Vue {
-  io: SocketIOClient.Socket;
+  // atributes
+  socket: SocketIOClient.Socket;
   imageName: string;
+
+  // properties
+  get imagePath(): string {
+    return this.imageName ? `/api/slide/${this.imageName}` : 'default.gif';
+  };
 
   constructor() {
     super();
     this.imageName = '';
   };
-
+  
+  // life cycle
   mounted() {
-    this.io = SocketIO();
-    this.io.on('server:message', (data: { imageName: string }) => {
+    this.socket = io();
+    this.socket.on('server:message', (data: { imageName: string }) => {
       this.imageName = data.imageName;
     });
   };
 
-  get imagePath(): string {
-    return this.imageName ? `/api/slide/${this.imageName}` : 'default.gif';
-  };
+  beforeDestroy() {
+    this.socket.disconnect();
+    this.socket = null;
+  }
 
+  // methods
   handleClickFullscreen(event) {
     const imgElem: HTMLImageElement = event.target;   
     imgElem.requestFullscreen();
